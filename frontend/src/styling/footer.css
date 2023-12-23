@@ -1,0 +1,62 @@
+/* footer.css */
+
+.footer {
+    background-color: #CFD2CF;
+    color: black;
+    padding: 30px 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-section {
+    width: 30%;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p {
+    margin: 0;
+  }
+  
+  .social-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align to the right */
+  }
+  
+  .social-section p {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .social-icons {
+    display: flex;
+  }
+  
+  .social-icons a {
+    margin-left: 10px; /* Add spacing between icons */
+  }
+  
+  .social-icons img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .footer-bottom p {
+    font-size: 0.8em;
+    margin: 0;
+  }
+  
