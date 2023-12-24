@@ -22,7 +22,7 @@ function NavbarComponent() {
             <li className={location.pathname === '/' ? 'active' : ''} onClick={() => navigateTo('/')}>
               Home
             </li>
-            <li className={location.pathname === '/explore' ? 'active' : ''} onClick={() => navigateTo('/explore')}>
+            <li className={location.pathname === '/daftar' ? 'active' : ''} onClick={() => navigateTo('/daftar')}>
               Daftar Mobil
             </li>
             <li className={location.pathname === '/about' ? 'active' : ''} onClick={() => navigateTo('/about')}>

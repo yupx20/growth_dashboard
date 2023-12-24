@@ -1,7 +1,7 @@
 /* Global Styles */
 :root {
     --white: #fff;
-    --biru-kostku: #A9A9A9;
+    --mafia-rent: #CFD2CF;
     --black: #000;
   }
 
@@ -164,7 +164,7 @@
   }
   
   .about-us .overlap-group {
-    background-color: var(--biru-kostku);
+    background-color: var(--mafia-rent);
     height: 219px;
     position: relative;
     width: 1440px;
@@ -218,7 +218,7 @@
   }
   
   .about-us .komputer-wrapper {
-    background-color: var(--biru-kostku);
+    background-color: var(--mafia-rent);
     height: 572px;
     left: 0;
     position: absolute;
