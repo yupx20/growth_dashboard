@@ -1,8 +1,10 @@
-// Cars.js
-import React from "react";
+import React, { useState } from "react";
 import "../styling/DaftarMobil.css";
 
 export const DaftarMobil = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredCars, setFilteredCars] = useState([]);
+
   const carsData = [
     {
       name: "Tesla Model S",
@@ -52,16 +54,44 @@ export const DaftarMobil = () => {
     // Add more cars as needed
   ];
 
+
+  // Function to filter cars based on search query
+  const filterCars = () => {
+    const query = searchQuery.toLowerCase();
+    const filtered = carsData.filter(
+      (car) =>
+        car.name.toLowerCase().includes(query) ||
+        car.description.toLowerCase().includes(query)
+    );
+    setFilteredCars(filtered);
+  };
+
+  // Handle changes in the search input
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    filterCars();
+  };
+
   return (
     <div className="cars-page">
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search for cars..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+      </div>
       <div className="cars-container">
-        {carsData.map((car, index) => (
-          <div className="car-card" key={index}>
-            <img className="car-image" alt={car.name} src={car.image} />
-            <h2 className="car-name">{car.name}</h2>
-            <p className="car-description">{car.description}</p>
-          </div>
-        ))}
+        {(filteredCars.length > 0 ? filteredCars : carsData).map(
+          (car, index) => (
+            <div className="car-card" key={index}>
+              <img className="car-image" alt={car.name} src={car.image} />
+              <h2 className="car-name">{car.name}</h2>
+              <p className="car-description">{car.description}</p>
+            </div>
+          )
+        )}
       </div>
     </div>
   );

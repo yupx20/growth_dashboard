@@ -15,8 +15,8 @@ const Benefits = () => {
         </div>
         <div className="benefit">
           <FontAwesomeIcon icon={faCar} size="2x" />
-          <h3>Modern dan Nyaman</h3>
-          <p>Setiap mobil dilengkapi dengan fasilitas modern, memastikan perjalanan Anda pasti nyaman.</p>
+          <h3>Many Car Variants</h3>
+          <p>Choose your favorite car from all the cars that we provide</p>
         </div>
         <div className="benefit">
           <FontAwesomeIcon icon={faStar} size="2x" />
