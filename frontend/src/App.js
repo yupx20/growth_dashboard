@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Daftar from './pages/Daftar';
 import Contact from './pages/Contact';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Detail from './pages/Detail';
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/daftar" element={<Daftar />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/detail" element={<Detail />} />
       </Routes>
     </Router>
   );
