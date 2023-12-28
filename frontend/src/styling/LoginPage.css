@@ -1,71 +1,68 @@
-/* LoginPage.css */
+.login-page {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('https://w.wallhaven.cc/full/mp/wallhaven-mpv5x8.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 .login-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    border-radius: 8px;
-  }
-  
-  h2 {
-    color: #333;
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  button {
-    background-color: #3498db;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #2980b9;
-    text-decoration: none; /* Remove underline on hover */
-  }
-  
-  .signup-message {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #333;
-    text-align: center;
-  }
-  
-  .signup-link {
-    color: #3498db;
-    cursor: pointer;
-    text-decoration: underline; /* Underline the text */
-  }
-  
-  .signup-link:hover {
-    text-decoration: none; /* Remove underline on hover */
-  }
-  
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  padding: 20px;
+  width: 450px;
+  text-align: left;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  color: #fff;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: #333;
+}
+
+.signup-message {
+  margin-top: 15px;
+  color: #fff;
+  text-align: center;
+}
+
+.signup-link {
+  color: #3c84ff;
+  cursor: pointer;
+  text-decoration: underline;
+}

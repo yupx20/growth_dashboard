@@ -4,9 +4,9 @@ const mysql = require('mysql');
 
 const dbConfig = {
   host: 'localhost',
-  user: 'your_mysql_user',
-  password: 'your_mysql_password',
-  database: 'rentcar_pbkk',
+  user: 'root',
+  password: '',
+  database: 'rentalmobil',
 };
 
 const pool = mysql.createPool(dbConfig);

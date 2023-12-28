@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 //import route mahasiswa
-const kostkuRouter = require('./routes/kostku');
-app.use('/api/kost',kostkuRouter); // use route mahasiswa di Express
+const rentRouter = require('./routes/rentCar');
+app.use('/api/rent',rentRouter); // use route mahasiswa di Express
 
 app.listen(port, () => {
     console.log(`app running at http://localhost:${port}`)

@@ -19,7 +19,7 @@ function NavbarComponent() {
         </div>
         <div className="menu">
           <ul>
-            <li className={location.pathname === '/' ? 'active' : ''} onClick={() => navigateTo('/')}>
+            <li className={location.pathname === '/' ? 'active' : ''} onClick={() => navigateTo('/home')}>
               Home
             </li>
             <li className={location.pathname === '/daftar' ? 'active' : ''} onClick={() => navigateTo('/daftar')}>
@@ -34,7 +34,7 @@ function NavbarComponent() {
           </ul>
         </div>
         <div className="login">
-          <span onClick={() => navigateTo('/login')}>Login</span>
+          <span onClick={() => navigateTo('/')}>Login</span>
         </div>
       </div>
 
