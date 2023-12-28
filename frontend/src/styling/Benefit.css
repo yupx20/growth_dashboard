@@ -1,44 +1,37 @@
-*{
-    font-family: 'Poppins';
-}
+/* Benefit.css */
+
 .benefits-container {
     padding: 40px;
-    height: 400px;
-    background-color: #FCFCFC;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    margin-top: 50px;
-}
-
-.benefit-row {
+    background-color: #f8f9fa; /* Light gray background color */
+  }
+  
+  .benefit-row {
     display: flex;
     justify-content: space-around;
-    width: 100%; 
-}
-
-.benefit {
-    flex: 1;
+    flex-wrap: wrap;
+  }
+  
+  .benefit {
     text-align: center;
     padding: 20px;
-    border: 1px solid #ddd; 
+    margin: 10px;
+    background-color: #fff; /* White background for each benefit */
     border-radius: 8px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-}
-
-.benefit:hover {
-    transform: rotateY(15deg) rotateX(5deg);
-}
-
-.benefit h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.benefit p {
-    font-size: 16px;
-    color: #555;
-}
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+  }
+  
+  .benefit h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333; /* Dark gray text color */
+  }
+  
+  .benefit p {
+    font-size: 14px;
+    color: #666; /* Gray text color */
+  }
+  
+  .map-container {
+    margin-top: 40px;
+  }
+  

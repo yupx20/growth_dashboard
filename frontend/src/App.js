@@ -8,6 +8,8 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Detail from './pages/Detail';
+import Order from './pages/Order';
+import Direct from './pages/Direct';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/detail" element={<Detail />} />
+        <Route path="/order" element={<Order />} />
+        <Route path="/direct" element={<Direct />} />
       </Routes>
     </Router>
   );

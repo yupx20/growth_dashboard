@@ -6,10 +6,18 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="footer-section">
+        {/* Location and Opening Hours Section */}
+        <div className="footer-sec">
+          <h3>Location</h3>
+          <p>Jl. Letjend. S. Parman No.4, Krajan Kulon, Waru, Kabupaten, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256</p>
+
+          <h3>Opening Hours</h3>
+          <p>Everyday: 04.00 AM - 23.59 PM</p>
         </div>
+
+        {/* Follow Us Section */}
         <div className="footer-section">
-          <h3>Follow Us</h3>
+          <h4>Follow Us</h4>
           <div className="social-icons">
             <a href="https://www.instagram.com/adibdaffa_" target="_blank" rel="noopener noreferrer">
               <img src="../assets/instagram.png" alt="Instagram" />

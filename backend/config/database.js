@@ -1,19 +1,14 @@
-let mysql = require('mysql');
+// backend/config/database.js
 
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'kostku2'
+const mysql = require('mysql');
 
-});
+const dbConfig = {
+  host: 'localhost',
+  user: 'your_mysql_user',
+  password: 'your_mysql_password',
+  database: 'rentcar_pbkk',
+};
 
-connection.connect(function (error) {
-    if (!!error) {
-        console.log(error);
-    } else {
-        console.log('Connection Succuessfully!');
-    }
-})
+const pool = mysql.createPool(dbConfig);
 
-module.exports = connection; 
+module.exports = pool;

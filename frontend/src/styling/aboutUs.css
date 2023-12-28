@@ -108,6 +108,7 @@
     position: absolute;
     top: 0;
     width: 563px;
+    border-radius: 50%;
   }
   
   .about-us .group-3 {
@@ -153,6 +154,7 @@
     position: absolute;
     top: 0;
     width: 561px;
+    border-radius: 50%;
   }
   
   .about-us .overlap-group-wrapper {

@@ -15,13 +15,13 @@ const Benefits = () => {
         </div>
         <div className="benefit">
           <FontAwesomeIcon icon={faCar} size="2x" />
-          <h3>Many Car Variants</h3>
-          <p>Choose your favorite car from all the cars that we provide</p>
+          <h3>Banyak Pilihan Mobil</h3>
+          <p>Pilih mobil favorit Anda dari semua mobil yang kami sediakan.</p>
         </div>
         <div className="benefit">
           <FontAwesomeIcon icon={faStar} size="2x" />
           <h3>Standar Kualitas Tinggi</h3>
-          <p>Menawarkan kualitas tinggi dalam segala hal, dari fasilitas hingga pelayanan, sehingga Anda bisa merasakan kenyamanan maksimal</p>
+          <p>Menawarkan kualitas tinggi dalam segala hal, dari fasilitas hingga pelayanan, sehingga Anda bisa merasakan kenyamanan maksimal.</p>
         </div>
       </div>
       {/* Peta Google Maps di bawah seperti footer */}
@@ -32,7 +32,7 @@ const Benefits = () => {
           height="200"
           frameBorder="0"
           style={{ border: 0 }}
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.019192439414!2dYOUR_LONGITUDE!3dYOUR_LATITUDE!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3AYOUR_PLACE_NAME!2sYOUR_PLACE_NAME!5e0!3m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15827.598178744422!2d112.71837472915651!3d-7.365156213486533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e4bab51796c3%3A0x72e59358a8c7300a!2sMcDonald&#39;s%20Waru!5e0!3m2!1sen!2sid!4v1703501963102!5m2!1sen!2sid"
           allowFullScreen
         ></iframe>
       </div>
