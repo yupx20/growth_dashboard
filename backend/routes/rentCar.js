@@ -64,7 +64,7 @@ router.post('/signup', [
 router.post('/login', [
     body('nama').notEmpty(), // Change 'email' to 'nama' for consistency with the frontend
     body('password').notEmpty(),
-], async function (req, res) {
+    ], async function (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({

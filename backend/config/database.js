@@ -1,14 +1,20 @@
-// backend/config/database.js
-
+// config/database.js
 const mysql = require('mysql');
 
-const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'rentalmobil',
-};
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'rentalmobil',
+});
 
-const pool = mysql.createPool(dbConfig);
+connection.connect((err) => {
+    if (err) {
+        console.error('Database connection failed: ', err);
+    } else {
+        console.log('Connected to the database');
+    }
+});
 
-module.exports = pool;
+module.exports = connection;
+

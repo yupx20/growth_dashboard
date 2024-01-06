@@ -11,7 +11,7 @@ const OrderingView = ({ car, handleOrderNow, handleCloseDetails }) => {
   };
 
   const handleWhatsAppOrder = () => {
-    const phoneNumber = "6282140543329"; // Replace with the actual phone number
+    const phoneNumber = "6281239070425"; // Replace with the actual phone number
     const message = `Halo, saya ingin pesan ${car.name}. Apakah tersedia pada tanggal ${selectedDate}?`; // Customize the message
 
     // Create a WhatsApp link
