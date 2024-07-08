@@ -1,20 +1,12 @@
-// config/database.js
-const mysql = require('mysql');
+const { Sequelize } = require('sequelize');
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'rentalmobil',
+const sequelize = new Sequelize('sda', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'mysql'
 });
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Database connection failed: ', err);
-    } else {
-        console.log('Connected to the database');
-    }
-});
+sequelize.authenticate()
+  .then(() => console.log('Database connected...'))
+  .catch(err => console.log('Error: ' + err));
 
-module.exports = connection;
-
+module.exports = sequelize;

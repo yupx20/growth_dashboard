@@ -1,7 +1,7 @@
 .login-page {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url('https://images.unsplash.com/photo-1606106931154-e644430401aa?q=80&w=1906&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-image: url('../assets/telkom.png'); /* Replace with actual image path */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -11,28 +11,29 @@
 }
 
 .login-container {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.39);
   border-radius: 10px;
   padding: 20px;
   width: 450px;
-  text-align: left;
+  text-align: center;
   font-weight: 500;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.login-container h2 {
-  color: #fff;
-  text-align: center;
+.login-container h1, .login-container h2 {
+  color: #000;
+  margin: 0 0 10px 0;
 }
 
 .form-group {
   margin-bottom: 15px;
+  text-align: left;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  color: #fff;
+  color: #000;
 }
 
 .form-group input {
@@ -51,7 +52,7 @@
   cursor: pointer;
 }
 
-.login:hover {
+.login-btn:hover {
   background-color: #333;
 }
 
@@ -62,7 +63,46 @@
 }
 
 .signup-link {
-  color: #3c84ff;
+  color: #F4CE14;
   cursor: pointer;
   text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .login-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .form-group input {
+    padding: 10px;
+  }
+
+  .login-btn {
+    padding: 12px;
+  }
+
+  .login-container h1, .login-container h2 {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .form-group input {
+    padding: 12px;
+  }
+
+  .login-btn {
+    padding: 14px;
+  }
+
+  .login-container h1, .login-container h2 {
+    font-size: 1.2em;
+  }
 }

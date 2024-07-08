@@ -10,7 +10,7 @@ function LoginPage() {
 
     const handleLogin = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/rent/login', {
+            const response = await fetch('http://localhost:3001/api/auth/login', {  // Updated endpoint URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,54 +20,53 @@ function LoginPage() {
 
             const data = await response.json();
 
-            if (data.status) {
+            if (data.message === 'Login successful') {  // Adjust the condition to match the backend response
                 navigate('/home');
             } else {
-                console.error('Login failed:', data.message);
+                console.error('Login failed:', data.error);
             }
         } catch (error) {
             console.error('Error during login:', error.message);
         }
     };
 
-    const handleSignUp = () => {
-
-        navigate('/signup');
+    const handleLoginAsAdmin = () => {
+        navigate('/loginadmin');
     };
 
     return (
-      <div className="login-page">
-          <div className="login-container">
-              <h2>Login</h2>
-              <form>
-                  <div className="form-group">
-                      <label htmlFor="nama">Username:</label>
-                      <input
-                          type="text"
-                          id="nama"
-                          value={nama}
-                          onChange={(e) => setNama(e.target.value)}
-                      />
-                  </div>
-                  <div className="form-group">
-                      <label htmlFor="password">Password:</label>
-                      <input
-                          type="password"
-                          id="password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                      />
-                  </div>
-                  <button type="button" className="login-btn" onClick={handleLogin}>
-                      Login
-                  </button>
-              </form>
-              <p className="signup-message">
-                  Don't have an account? <span className="signup-link" onClick={handleSignUp}>Sign up</span>
-              </p>
-          </div>
-      </div>
-  );
+        <div className="login-page">
+            <div className="login-container">
+                <h2>Witel</h2>
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="nama">Username</label>
+                        <input
+                            type="text"
+                            id="nama"
+                            value={nama}
+                            onChange={(e) => setNama(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <button type="button" className="login-btn" onClick={handleLogin}>
+                        Login
+                    </button>
+                </form>
+                <p className="signup-message">
+                    Don't have an account? <span className="signup-link" onClick={handleLoginAsAdmin}>Login as Admin</span>
+                </p>
+            </div>
+        </div>
+    );
 }
 
 export default LoginPage;

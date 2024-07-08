@@ -34,7 +34,7 @@ function NavbarComponent() {
           </ul>
         </div>
         <div className="login">
-          <span onClick={() => navigateTo('/')}>Login</span>
+          <span onClick={() => navigateTo('/')}>Logout</span>
         </div>
       </div>
 

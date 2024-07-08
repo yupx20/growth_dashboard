@@ -38,7 +38,7 @@ function SignUpPage() {
         <h2>Sign Up</h2>
         <form>
           <div className="form-group-signup">
-            <label htmlFor="nama">Username:</label>
+            <label htmlFor="nama">Username</label>
             <input
               type="text"
               id="nama"
@@ -47,7 +47,7 @@ function SignUpPage() {
             />
           </div>
           <div className="form-group-signup">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
@@ -60,7 +60,7 @@ function SignUpPage() {
           </button>
         </form>
         <p className="login-message">
-          Already have an account? <Link to="/" className="login-link">Login</Link>
+          Already have an a account?  <Link to="/" className="login-link">Login</Link>
         </p>
       </div>
     </div>

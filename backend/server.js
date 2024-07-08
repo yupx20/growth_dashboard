@@ -1,28 +1,21 @@
-// backend/server.js
+const express = require('express');
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/auth');
+const sequelize = require('./config/database');
 
-// ... (previous code)
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-  
-    if (!username || !password) {
-      return res.status(400).json({ message: 'Username and password are required.' });
-    }
-  
-    const sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
-    pool.query(sql, [username, password], (err, results) => {
-      if (err) {
-        console.error('Error executing query:', err);
-        return res.status(500).json({ message: 'Internal server error' });
-      }
-  
-      if (results.length > 0) {
-        return res.json({ message: 'Login successful!' });
-      } else {
-        return res.status(401).json({ message: 'Invalid credentials' });
-      }
-    });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/api/auth', authRoutes);
+
+sequelize.sync().then(() => {
+  console.log('Database & tables created!');
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
   });
-  
-  // ... (remaining code)
-  
+}).catch(err => {
+  console.error('Unable to connect to the database:', err.message);
+});

@@ -2,7 +2,7 @@
 .signup-page {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2783&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-image: url('../assets/telkom.png'); /* Replace 'your-image.jpg' with the actual image name */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -20,7 +20,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .signup-container h2{
-  color: #fff;
+  color: #000;
   text-align: center;
 
 }
@@ -32,7 +32,7 @@
 .form-group-signup label {
   display: block;
   margin-bottom: 5px;
-  color: #fff;
+  color: #000;
 }
 .form-group-signup input {
   width: 100%;
@@ -69,7 +69,7 @@
 }
 
 .login-link {
-  color: #3c84ff;
+  color: #F4CE14;
   cursor: pointer;
   text-decoration: underline;
 }
