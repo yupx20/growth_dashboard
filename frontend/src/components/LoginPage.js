@@ -21,7 +21,14 @@ function LoginPage() {
             const data = await response.json();
 
             if (data.message === 'Login successful') {  // Adjust the condition to match the backend response
-                navigate('/home');
+                const token = data.token;
+                const { role } = JSON.parse(atob(token.split('.')[1]));
+
+                if (role === 'user') {
+                    navigate('/userhome');
+                } else if (role === 'admin') {
+                    navigate('/adminhome');
+                }
             } else {
                 console.error('Login failed:', data.error);
             }
@@ -37,7 +44,7 @@ function LoginPage() {
     return (
         <div className="login-page">
             <div className="login-container">
-                <h2>Witel</h2>
+                <h2></h2>
                 <form>
                     <div className="form-group">
                         <label htmlFor="nama">Username</label>

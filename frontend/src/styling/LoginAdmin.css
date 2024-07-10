@@ -1,7 +1,7 @@
 .login-admin-page {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('../assets/telkom.png'); /* Replace with actual image path */
+    background-image: url('../assets/bg.png'); /* Replace with actual image path */
     background-size: cover;
     background-position: center;
     display: flex;

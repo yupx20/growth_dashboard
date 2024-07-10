@@ -2,7 +2,7 @@
 .signup-page {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url('../assets/telkom.png'); /* Replace 'your-image.jpg' with the actual image name */
+  background-image: url('../assets/bg.png'); /* Replace 'your-image.jpg' with the actual image name */
   background-size: cover;
   background-position: center;
   display: flex;

@@ -21,7 +21,14 @@ function LoginAdminPage() {
             const data = await response.json();
 
             if (data.status) {
-                navigate('/home');
+                const token = data.token;
+                const { role } = JSON.parse(atob(token.split('.')[1]));
+
+                if (role === 'admin') {
+                    navigate('/adminhome');
+                } else {
+                    navigate('/home');
+                }
             } else {
                 console.error('Admin login failed:', data.message);
             }

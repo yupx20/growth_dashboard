@@ -1,50 +1,53 @@
 const express = require('express');
 const router = express.Router();
-const Witel = require('../models/Witel');
-const Admin = require('../models/Admin');
+const jwt = require('jsonwebtoken');
+const Admin = require('../models/admin');
+const User = require('../models/user');
 
-// User login route
-router.post('/login', async (req, res) => {
-  const { nama, password } = req.body;
+// Admin Login
+router.post('/admin/login', async (req, res) => {
+    const { adminName, adminPassword } = req.body;
+    try {
+        const admin = await Admin.findOne({ where: { adminName } });
+        if (!admin) {
+            return res.status(400).json({ status: false, message: 'Invalid credentials' });
+        }
 
-  if (!nama || !password) {
-    return res.status(400).json({ error: 'Username and password are required' });
-  }
+        const isMatch = await admin.comparePassword(adminPassword);
+        if (!isMatch) {
+            return res.status(400).json({ status: false, message: 'Invalid credentials' });
+        }
 
-  try {
-    const user = await Witel.findOne({ where: { nama } });
+        const token = jwt.sign({ id: admin.id, role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    if (!user || user.password !== password) {
-      return res.status(401).json({ error: 'Invalid username or password' });
+        res.json({ status: true, token });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ status: false, message: 'Server error' });
     }
-
-    // Successful login
-    res.json({ message: 'Login successful' });
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
-  }
 });
 
-// Admin login route
-router.post('/admin/login', async (req, res) => {
-  const { nip, password } = req.body;
+// User Login
+router.post('/login', async (req, res) => {
+    const { nama, password } = req.body;
+    try {
+        const user = await User.findOne({ where: { nama } });
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
 
-  if (!nip || !password) {
-    return res.status(400).json({ error: 'NIP and password are required' });
-  }
+        const isMatch = await user.comparePassword(password);
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
 
-  try {
-    const admin = await Admin.findOne({ where: { nip } });
+        const token = jwt.sign({ id: user.id, role: 'user' }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    if (!admin || admin.password !== password) {
-      return res.status(401).json({ error: 'Invalid admin NIP or password' });
+        res.json({ message: 'Login successful', token });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
     }
-
-    // Successful login
-    res.json({ message: 'Admin login successful' });
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
-  }
 });
 
 module.exports = router;
