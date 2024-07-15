@@ -7,33 +7,33 @@ function LoginPage() {
 
     const [nama, setNama] = useState(''); 
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleLogin = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/auth/login', {  // Updated endpoint URL
+            const response = await fetch('http://localhost:8000/login/user/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ nama, password }),
+                body: JSON.stringify({ witel: nama, password: password }),
             });
 
             const data = await response.json();
 
-            if (data.message === 'Login successful') {  // Adjust the condition to match the backend response
-                const token = data.token;
-                const { role } = JSON.parse(atob(token.split('.')[1]));
-
-                if (role === 'user') {
-                    navigate('/userhome');
-                } else if (role === 'admin') {
-                    navigate('/adminhome');
-                }
+            if (data.status) {
+                setSuccessMessage(data.message);
+                setErrorMessage('');
+                navigate('/home');
             } else {
-                console.error('Login failed:', data.error);
+                setErrorMessage(data.message);
+                setSuccessMessage('');
+                console.error('User login failed:', data.message);
             }
         } catch (error) {
-            console.error('Error during login:', error.message);
+            setErrorMessage('Error during User login');
+            console.error('Error during User login:', error.message);
         }
     };
 
@@ -44,10 +44,10 @@ function LoginPage() {
     return (
         <div className="login-page">
             <div className="login-container">
-                <h2></h2>
+                <h2>User Login</h2>
                 <form>
                     <div className="form-group">
-                        <label htmlFor="nama">Username</label>
+                        <label htmlFor="nama">Witel</label>
                         <input
                             type="text"
                             id="nama"
@@ -67,10 +67,10 @@ function LoginPage() {
                     <button type="button" className="login-btn" onClick={handleLogin}>
                         Login
                     </button>
+                    {errorMessage && <div className="error-message">{errorMessage}</div>}
+                    {successMessage && <div className="success-message">{successMessage}</div>}
                 </form>
-                <p className="signup-message">
-                    Don't have an account? <span className="signup-link" onClick={handleLoginAsAdmin}>Login as Admin</span>
-                </p>
+                <span className="signup-link" onClick={handleLoginAsAdmin}>Login as Admin</span>
             </div>
         </div>
     );

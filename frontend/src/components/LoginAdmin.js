@@ -7,34 +7,38 @@ function LoginAdminPage() {
 
     const [adminName, setAdminName] = useState(''); 
     const [adminPassword, setAdminPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleAdminLogin = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/auth/admin/login', {
+            const response = await fetch('http://localhost:8000/login/admin/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ adminName, adminPassword }),
+                body: JSON.stringify({ username: adminName, password: adminPassword }),
             });
 
             const data = await response.json();
 
             if (data.status) {
-                const token = data.token;
-                const { role } = JSON.parse(atob(token.split('.')[1]));
-
-                if (role === 'admin') {
-                    navigate('/adminhome');
-                } else {
-                    navigate('/home');
-                }
+                setSuccessMessage(data.message);
+                setErrorMessage('');
+                navigate('/home');
             } else {
+                setErrorMessage(data.message);
+                setSuccessMessage('');
                 console.error('Admin login failed:', data.message);
             }
         } catch (error) {
+            setErrorMessage('Error during admin login');
             console.error('Error during admin login:', error.message);
         }
+    };
+
+    const handleLoginAsUser = () => {
+        navigate('/');
     };
 
     return (
@@ -43,7 +47,7 @@ function LoginAdminPage() {
                 <h2>Admin Login</h2>
                 <form>
                     <div className="form-group">
-                        <label htmlFor="adminName">NIP</label>
+                        <label htmlFor="adminName">Username</label>
                         <input
                             type="text"
                             id="adminName"
@@ -63,6 +67,9 @@ function LoginAdminPage() {
                     <button type="button" className="login-admin-btn" onClick={handleAdminLogin}>
                         Login
                     </button>
+                    {errorMessage && <div className="error-message">{errorMessage}</div>}
+                    {successMessage && <div className="success-message">{successMessage}</div>}
+                    <span className="signup-link" onClick={handleLoginAsUser}>Login as User</span>
                 </form>
             </div>
         </div>
