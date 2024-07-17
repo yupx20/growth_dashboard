@@ -21,7 +21,11 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/loginadmin" element={<Admin />} />
+<<<<<<< HEAD
         <Route path="/dashboard" element={<Dashboard/>} />
+=======
+        <Route path="/dashboard" element={<Dashboard />} />
+>>>>>>> 1331def7a890f9a649cae95b4b7ad6e83a89f6c0
       </Routes>
     </Router>
   );

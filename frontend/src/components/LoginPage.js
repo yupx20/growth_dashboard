@@ -25,6 +25,7 @@ function LoginPage() {
             if (data.status) {
                 setSuccessMessage(data.message);
                 setErrorMessage('');
+                alert(`Welcome Witel ${nama}!`);
                 navigate('/home');
             } else {
                 setErrorMessage(data.message);
