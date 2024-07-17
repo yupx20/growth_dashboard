@@ -1,0 +1,86 @@
+.main-content {
+    margin-left: 250px; /* Same width as the sidebar */
+    padding: 1rem; /* Optional padding */
+}
+
+/* Ensure the chart-sc also respects the sidebar */
+.chart-sc {
+    margin-left: 250px; /* Same width as the sidebar */
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+.bg-telkom{
+    background: red;
+    background-size: cover; /* Ensure the image covers the entire element */
+    background-position: center; /* Center the image */
+    width: 100%; /* Set the desired width */
+    height: 300px; 
+}
+/* styles.css */
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 1280px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.xl\:col-start-1 {
+    grid-column-start: 1;
+}
+
+.xl\:col-end-4 {
+    grid-column-end: 4;
+}
+
+.xl\:col-start-4 {
+    grid-column-start: 4;
+}
+
+.xl\:col-end-6 {
+    grid-column-end: 6;
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.mb-14 {
+    margin-bottom: 3.5rem;
+}
+
+
+@media (min-width: 768px) {
+    .chart-sc {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* dashboard.css */
+
+.px-3 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.h-auto {
+    height: auto;
+}

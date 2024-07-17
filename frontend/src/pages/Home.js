@@ -1,17 +1,11 @@
-import NavbarComponent from "../components/Navbar";
-import HeroSection from "../components/Hero-section";
-import Benefits from "../components/Benefits";
-import FooterPage from "../components/FooterPage";
-const Home = () =>{
-    return(
+import Dashboard from "../components/DashboardPage";
+
+const Home = () => {
+  return (
     <div>
-         <NavbarComponent/>
-      <HeroSection/>
-    <Benefits/>
-    <FooterPage/>
+      <Dashboard />
     </div>
-     
-    )
-}
+  );
+};
 
 export default Home;

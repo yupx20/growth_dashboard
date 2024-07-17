@@ -1,0 +1,57 @@
+/* adminNavbar.css */
+
+.admin-navbar {
+    padding: 10px 20px; /* Padding atas bawah 10px, kiri kanan 20px */
+    background-color: #007bff; /* Warna latar belakang */
+    border-radius: 5px; /* Agar sudut sedikit melengkung */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan ringan */
+}
+
+.admin-navbar .navbar-brand {
+    color: #fff; /* Warna teks putih */
+    font-size: 1.2rem; /* Ukuran font sedang */
+    font-weight: bold; /* Tebalkan font */
+}
+
+.admin-navbar .navbar-toggler {
+    color: #fff; /* Warna ikon (misal: ikon bars dan times) */
+}
+
+.admin-navbar .form-control {
+    border-color: #fff; /* Warna garis input */
+    color: #fff; /* Warna teks input */
+    background-color: rgba(255, 255, 255, 0.1); /* Latar belakang input agak transparan */
+}
+
+.admin-navbar .form-control::placeholder {
+    color: #ccc; /* Warna placeholder (teks ketika input kosong) */
+}
+
+.admin-navbar .btn-outline-light {
+    border-color: #fff; /* Warna garis tombol */
+    color: #fff; /* Warna teks tombol */
+    margin-left: 5px; /* Jarak kiri antara input dan tombol */
+}
+
+.admin-navbar .dropdown-toggle {
+    border: none; /* Hapus border */
+    padding: 0; /* Hapus padding bawaan */
+    background-color: transparent; /* Latar belakang transparan */
+    box-shadow: none; /* Hapus bayangan */
+}
+
+.admin-navbar .dropdown-menu {
+    background-color: #007bff; /* Warna latar belakang dropdown */
+    border: none; /* Hapus border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan ringan */
+}
+
+.admin-navbar .dropdown-item {
+    color: #fff; /* Warna teks item */
+    padding: 10px 20px; /* Padding item */
+}
+
+.admin-navbar .dropdown-item:hover,
+.admin-navbar .dropdown-item:focus {
+    background-color: #0056b3; /* Warna latar belakang saat hover/focus */
+}
