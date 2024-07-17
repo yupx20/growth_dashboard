@@ -3,12 +3,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  color: black;
+  background-color: #EE2E24;
+  color:white;
   
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.container{
+.container {
   padding : 5px;
 }
 .title {

@@ -15,7 +15,7 @@ function NavbarComponent() {
 
       <div className="container">
         <div className="title">
-          <h3>Mafia Rent Car</h3>
+          <h3>GROWTHSDA</h3>
         </div>
         <div className="menu">
           <ul>

@@ -21,7 +21,7 @@ const HeroSection = () => {
       </div>
       <div className="right-section">
         <img
-          src="https://images.unsplash.com/photo-1518306727298-4c17e1bf6942?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGNhcnxlbnwwfHwwfHx8MA%3D%3D"
+          src="https://www.telkom.co.id/minio/show/data/image_upload/page/1594112895830_compress_PNG%20Icon%20Telkom.png"
           alt="Right Section"
         />
       </div>

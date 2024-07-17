@@ -25,6 +25,7 @@ function LoginAdminPage() {
             if (data.status) {
                 setSuccessMessage(data.message);
                 setErrorMessage('');
+                alert(`Welcome ${adminName}!`);
                 navigate('/home');
             } else {
                 setErrorMessage(data.message);
