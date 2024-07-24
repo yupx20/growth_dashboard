@@ -1,9 +1,10 @@
-import Dashboard from "../components/DashboardPage";
+import React from 'react';
+import HomeScreen from '../components/HomeScreen';
 
 const Home = () => {
   return (
     <div>
-      <Dashboard />
+      <HomeScreen />
     </div>
   );
 };

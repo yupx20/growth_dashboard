@@ -1,99 +1,82 @@
-import { Container, Row, Col } from "react-bootstrap";
-import StatusCard from "../components/StatusCard";
-import PageVisitsCard from "../components/PageVisitsCard";
-import TrafficCard from "../components/TrafficCard";
-import Sidebar from "../components/SideBar";
-import ChartBar from "../components/ChartBar";
-import ChartLine from "../components/ChartLine";
-import "../styling/dashboard.css";
+import React, { useState, useEffect } from 'react';
+import Navbar from './Navbar'; // Import Navbar component
+import '../styling/dashboard.css';
 
-export default function Dashboard() {
+const Dashboard = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = JSON.parse(localStorage.getItem('formData')) || [];
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <>
-    <div className="chart-main">
-
-      <div className="chart-sc">
-        <Sidebar />
-        <div className="container mx-auto max-w-full">
-          <div className="grid grid-cols-1 xl:grid-cols-5">
-            <div className="xl:col-start-1 xl:col-end-4 px-4 mb-14">
-              <ChartLine />
-            </div>
-            <div className="xl:col-start-4 xl:col-end-6 px-4 mb-14">
-              <ChartBar />
-            </div>
-          </div>
+    <div className="dashboard-container">
+      <Navbar /> {/* Include Navbar component */}
+      <div className="dashboard-content">
+        <div className="dashboard">
+          <table>
+            <thead>
+              <tr>
+                <th>IDLOP</th>
+                <th>Nama Pelanggan</th>
+                <th>Judul Kontrak KB</th>
+                <th>Nomor Kontrak KB</th>
+                <th>Estimasi Tanggal KB</th>
+                <th>Jangka Waktu Kontrak</th>
+                <th>Start Date Kontrak</th>
+                <th>End Date Kontrak</th>
+                <th>Skema Bayar Pelanggan</th>
+                <th>Target Delivery</th>
+                <th>PIC Witel</th>
+                <th>Jenis OBL</th>
+                <th>Mitra</th>
+                <th>Judul Justifikasi OBL</th>
+                <th>Perkiraan Nilai Pekerjaan</th>
+                <th>Jenis Pengadaan</th>
+                <th>Target Billcomp</th>
+                <th>Nomor Quote</th>
+                <th>Alasan Keterlambatan Pengajuan OBL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.idlop}</td>
+                  <td>{item.namaPelanggan}</td>
+                  <td>{item.judulKontrakKB}</td>
+                  <td>{item.nomorKontrakKB}</td>
+                  <td>{item.estimasiTanggalKB}</td>
+                  <td>{item.jangkaWaktuKontrak}</td>
+                  <td>{item.startDateKontrak}</td>
+                  <td>{item.endDateKontrak}</td>
+                  <td>{item.skemaBayarPelanggan}</td>
+                  <td>{item.targetDelivery}</td>
+                  <td>{item.picWitel}</td>
+                  <td>{item.jenisOBL}</td>
+                  <td>{item.mitra}</td>
+                  <td>{item.judulJustifikasiOBL}</td>
+                  <td>{item.perkiraanNilaiPekerjaan}</td>
+                  <td>{item.jenisPengadaan}</td>
+                  <td>{item.targetBillcomp}</td>
+                  <td>{item.nomorQuote}</td>
+                  <td>{item.alasanKeterlambatanOBL}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-
-      <div className="px-3">
-                <Container fluid>
-                    <Row className="mb-4">
-                        <Col lg={6} xl={3} className="mb-4">
-                            <StatusCard
-                                color="pink"
-                                icon="trending_up"
-                                title="Traffic"
-                                amount="350,897"
-                                percentage="3.48"
-                                percentageIcon="arrow_upward"
-                                percentageColor="green"
-                                date="Since last month"
-                            />
-                        </Col>
-                        <Col lg={6} xl={3} className="mb-4">
-                            <StatusCard
-                                color="orange"
-                                icon="groups"
-                                title="New Users"
-                                amount="2,356"
-                                percentage="3.48"
-                                percentageIcon="arrow_downward"
-                                percentageColor="red"
-                                date="Since last week"
-                            />
-                        </Col>
-                        <Col lg={6} xl={3} className="mb-4">
-                            <StatusCard
-                                color="purple"
-                                icon="paid"
-                                title="Sales"
-                                amount="924"
-                                percentage="1.10"
-                                percentageIcon="arrow_downward"
-                                percentageColor="orange"
-                                date="Since yesterday"
-                            />
-                        </Col>
-                        <Col lg={6} xl={3} className="mb-4">
-                            <StatusCard
-                                color="blue"
-                                icon="poll"
-                                title="Performance"
-                                amount="49.65%"
-                                percentage="12"
-                                percentageIcon="arrow_upward"
-                                percentageColor="green"
-                                date="Since last month"
-                            />
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-
-            <div className="px-3 h-auto">
-                <Container fluid>
-                    <Row>
-                        <Col xl={8} className="mb-4">
-                            <PageVisitsCard />
-                        </Col>
-                        <Col xl={4} className="mb-4">
-                            <TrafficCard />
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-            </div>
-    </>
+    </div>
   );
-}
+};
+
+export default Dashboard;

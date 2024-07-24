@@ -1,0 +1,69 @@
+/* NewPageComponent.css */
+.background {
+  position: fixed; /* Keeps the background fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/sda.jpg'); /* Replace with actual image path */
+  background-size: cover; /* Ensures the image covers the whole background */
+  z-index: -1; /* Places the background behind other content */
+}
+
+.new-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .new-page h3 {
+    text-align: center;
+    color: #973131;
+    margin-bottom: 20px;
+  }
+
+  .new-page p {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+  }
+  
+  .new-page form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .new-page label {
+    margin-bottom: 15px;
+    color: #555;
+  }
+  
+  .new-page label select,
+  .new-page label input[type="text"],
+  .new-page label input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .new-page button {
+    padding: 10px 20px;
+    background-color: #973131;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .new-page button:hover {
+    background-color: #973131;
+  }
+  

@@ -1,86 +1,67 @@
-.main-content {
-    margin-left: 250px; /* Same width as the sidebar */
-    padding: 1rem; /* Optional padding */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
 }
 
-/* Ensure the chart-sc also respects the sidebar */
-.chart-sc {
-    margin-left: 250px; /* Same width as the sidebar */
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-}
-.bg-telkom{
-    background: red;
-    background-size: cover; /* Ensure the image covers the entire element */
-    background-position: center; /* Center the image */
-    width: 100%; /* Set the desired width */
-    height: 300px; 
-}
-/* styles.css */
-
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
+.dashboard-content {
+  /* margin-left: 1px; Adjust the margin to the width of the navbar */
+  padding: 20px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: calc(100% - 275px); /* Take the remaining width */
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (min-width: 1280px) {
-    .grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
+/* .dashboard h1 {
+  text-align: center;
+  color: #973131;
+  margin-bottom: 20px;
+} */
+
+.dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #fff; /* Ensure table background is white */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
-.xl\:col-start-1 {
-    grid-column-start: 1;
+.dashboard th, .dashboard td {
+  border: 1px solid #ddd;
+  padding: 12px; /* Increase padding for better readability */
+  text-align: center;
+  vertical-align: middle; /* Vertically center text */
 }
 
-.xl\:col-end-4 {
-    grid-column-end: 4;
+.dashboard th {
+  background-color: #f2f2f2;
+  color: #555;
 }
 
-.xl\:col-start-4 {
-    grid-column-start: 4;
+.dashboard tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-.xl\:col-end-6 {
-    grid-column-end: 6;
+.dashboard tr:hover {
+  background-color: #ddd;
 }
 
-.px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+/* Additional styling for better visuals */
+.dashboard th:first-child, .dashboard td:first-child {
+  border-left: 0; /* Remove left border for the first column */
 }
 
-.mb-14 {
-    margin-bottom: 3.5rem;
+.dashboard th:last-child, .dashboard td:last-child {
+  border-right: 0; /* Remove right border for the last column */
 }
 
-
-@media (min-width: 768px) {
-    .chart-sc {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
+.dashboard tr:first-child th {
+  border-top: 0; /* Remove top border for the first row */
 }
 
-/* dashboard.css */
-
-.px-3 {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: calc(100% - 250px);
-    margin-left: 250px;
-}
-
-.mb-4 {
-    margin-bottom: 1.5rem;
-}
-
-.h-auto {
-    height: auto;
+.dashboard tr:last-child td {
+  border-bottom: 0; /* Remove bottom border for the last row */
 }

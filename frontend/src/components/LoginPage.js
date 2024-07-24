@@ -1,11 +1,11 @@
+// src/components/LoginPage.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styling/LoginPage.css';
 
 function LoginPage() {
     const navigate = useNavigate();
-
-    const [nama, setNama] = useState(''); 
+    const [nama, setNama] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
@@ -25,6 +25,7 @@ function LoginPage() {
             if (data.status) {
                 setSuccessMessage(data.message);
                 setErrorMessage('');
+                localStorage.setItem('user', nama);
                 alert(`Welcome Witel ${nama}!`);
                 navigate('/home');
             } else {
@@ -45,7 +46,7 @@ function LoginPage() {
     return (
         <div className="login-page">
             <div className="login-container">
-                <h2>User Login</h2>
+                <h2>Witel Login</h2>
                 <form>
                     <div className="form-group">
                         <label htmlFor="nama">Witel</label>

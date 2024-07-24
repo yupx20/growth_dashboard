@@ -1,45 +1,26 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import '../styling/NavbarComponent.css';
+import { Link } from 'react-router-dom';
+import '../styling/Sidebar.css'; // Pastikan nama file CSS sesuai
 
-function NavbarComponent() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const navigateTo = (path) => {
-    navigate(path);
-  };
-
-  return (
-    <div className="navbar">
-
-      <div className="container">
-        <div className="title">
-          <h3>GROWTHSDA</h3>
+const Navbar = () => {
+    return (
+        <div className="navbar">
+            <div className="logo"></div>
+            <ul>
+                <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                </li>
+                <li>
+                    <Link to="/profil">Profil</Link>
+                </li>
+            </ul>
+            <ul className="logout">
+                <li>
+                    <Link to="/">Logout</Link>
+                </li>
+            </ul>
         </div>
-        <div className="menu">
-          <ul>
-            <li className={location.pathname === '/' ? 'active' : ''} onClick={() => navigateTo('/home')}>
-              Home
-            </li>
-            <li className={location.pathname === '/daftar' ? 'active' : ''} onClick={() => navigateTo('/daftar')}>
-              Daftar Mobil
-            </li>
-            <li className={location.pathname === '/about' ? 'active' : ''} onClick={() => navigateTo('/about')}>
-              About
-            </li>
-            <li className={location.pathname === '/contact' ? 'active' : ''} onClick={() => navigateTo('/contact')}>
-              Contact
-            </li>
-          </ul>
-        </div>
-        <div className="login">
-          <span onClick={() => navigateTo('/')}>Logout</span>
-        </div>
-      </div>
+    );
+};
 
-    </div>
-  );
-}
-
-export default NavbarComponent;
+export default Navbar;
