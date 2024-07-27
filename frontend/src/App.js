@@ -9,7 +9,6 @@ import Input from './pages/Input';
 import Dashboard from './pages/Dashboard';
 import Profil from './pages/Profil';
 import Welcome from './pages/Welcome';
-import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -19,10 +18,10 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/loginadmin" element={<Admin />} />
-        <Route path="/input" element={<PrivateRoute element={<Input />} />} />
-        <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
-        <Route path="/profil" element={<PrivateRoute element={<Profil />} />} />
-        <Route path="/welcome" element={<PrivateRoute element={<Welcome />} />} />
+        <Route path="/input" element={<Input />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profil" element={<Profil />} />
+        <Route path="/welcome" element={<Welcome />} />
       </Routes>
     </Router>
   );

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faChartBar } from '@fortawesome/free-solid-svg-icons';
 import Navbar from './Navbar';
 import '../styling/HomeScreen.css';
 
@@ -10,11 +12,10 @@ const HomeScreen = () => {
     const username = location.state?.adminName || 'Admin';
 
     useEffect(() => {
-        // Logika untuk memeriksa apakah pengguna sudah login
-        const isLoggedIn = !!location.state?.adminName; // Misalnya menggunakan state dari react-router
+        const isLoggedIn = !!location.state?.adminName;
 
         if (!isLoggedIn) {
-            navigate('/'); // Arahkan ke path login jika belum login
+            navigate('/'); 
             return;
         }
 
@@ -30,10 +31,36 @@ const HomeScreen = () => {
         }
     }, [username, navigate, location.state]);
 
+    const handleNotificationClick = () => {
+        // Tambahkan logika untuk aksi saat tombol notifikasi diklik
+        alert('Notification button clicked');
+    };
+
+    const handleStatisticsClick = () => {
+        // Tambahkan logika untuk aksi saat tombol statistik diklik
+        alert('Statistics button clicked');
+    };
+
     return (
         <div className="home-container">
             <Navbar />
             <div className="greeting">{greeting}</div>
+            <div className="frames-container">
+                <button className="frame notification-frame" onClick={handleNotificationClick}>
+                    <div className="frame-icon">
+                        <FontAwesomeIcon icon={faBell} />
+                    </div>
+                    <p className="frame-number">99+</p>
+                    <p className="frame-text">Waiting for approval</p>
+                </button>
+                <button className="frame statistics-frame" onClick={handleStatisticsClick}>
+                    <div className="frame-icon">
+                        <FontAwesomeIcon icon={faChartBar} />
+                    </div>
+                    <p className="frame-number">99+</p>
+                    <p className="frame-text">Statistics</p>
+                </button>
+            </div>
         </div>
     );
 };

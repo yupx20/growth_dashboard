@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box; /* Ensure padding is included in the width */
+  font-family: Montserrat;
 }
 
 .navbar .logo {

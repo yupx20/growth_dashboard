@@ -27,7 +27,7 @@ function LoginPage() {
                 setErrorMessage('');
                 localStorage.setItem('user', nama);
                 alert(`Welcome Witel ${nama}!`);
-                navigate('/home');
+                navigate('/input');
             } else {
                 setErrorMessage(data.message);
                 setSuccessMessage('');
