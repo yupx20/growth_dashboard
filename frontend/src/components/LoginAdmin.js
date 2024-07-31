@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styling/LoginAdmin.css';
+import { io } from 'socket.io-client';
 
 function LoginAdminPage() {
     const navigate = useNavigate();
@@ -9,6 +10,15 @@ function LoginAdminPage() {
     const [adminPassword, setAdminPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [socket, setSocket] = useState(null);
+
+    // Inisialisasi socket saat komponen dimuat
+    useEffect(() => {
+        const newSocket = io('http://localhost:5000');
+        setSocket(newSocket);
+
+        return () => newSocket.close(); // Tutup koneksi socket saat komponen unmount
+    }, []);
 
     const handleAdminLogin = async () => {
         try {
@@ -26,6 +36,13 @@ function LoginAdminPage() {
                 setSuccessMessage(data.message);
                 setErrorMessage('');
                 alert(`Welcome ${adminName}!`);
+
+                // Emit event newUser ke server dengan informasi admin
+                if (socket) {
+                    socket.emit("newUser", { username: adminName});
+                }
+
+                // Navigasi ke halaman home dengan state
                 navigate('/home', { state: { adminName } });
             } else {
                 setErrorMessage(data.message);

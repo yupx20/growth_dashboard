@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../styling/Input.css';
 
-const InputUser = () => {
+const InputUser = ({ socket, user, adminName}) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [greeting, setGreeting] = useState('');
   const [userName, setUserName] = useState('');
+  const [submit ,setSubmit] = useState('');
+
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem('user') || 'User';
     setUserName(user);
 
     const hours = new Date().getHours();
@@ -21,9 +24,11 @@ const InputUser = () => {
     }
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic
+  const handleSubmit = (type) => {
+    type.preventDefault();
+    alert("Data submitted");
+    socket.emit("sendNotification", submit);
+    setSubmit('');
   };
 
   return (
