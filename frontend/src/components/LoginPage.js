@@ -1,7 +1,8 @@
 // src/components/LoginPage.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styling/LoginPage.css';
+import { io } from 'socket.io-client';
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -9,6 +10,15 @@ function LoginPage() {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [socket, setSocket] = useState(null);
+
+    // Inisialisasi socket saat komponen dimuat
+    useEffect(() => {
+        const newSocket = io('http://localhost:5000');
+        setSocket(newSocket);
+
+        return () => newSocket.close(); // Tutup koneksi socket saat komponen unmount
+    }, []);
 
     const handleLogin = async () => {
         try {
@@ -27,6 +37,12 @@ function LoginPage() {
                 setErrorMessage('');
                 localStorage.setItem('user', nama);
                 alert(`Welcome Witel ${nama}!`);
+
+                // Emit event newUser ke server dengan informasi witel
+                if (socket) {
+                    socket.emit("newUser", { username: nama });
+                }
+
                 navigate('/input');
             } else {
                 setErrorMessage(data.message);
