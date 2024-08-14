@@ -2,13 +2,37 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styling/Input.css';
 
-const InputUser = ({ socket, user, adminName}) => {
+const InputUser = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [greeting, setGreeting] = useState('');
   const [userName, setUserName] = useState('');
-  const [submit ,setSubmit] = useState('');
 
+  // State untuk menyimpan data form
+  const [formData, setFormData] = useState({
+    witel: '',
+    bud: '',
+    tahunProject: '',
+    idlop: '',
+    namaPelanggan: '',
+    judulKontrakKB: '',
+    nomorKontrakKB: '',
+    estimasiTanggalKB: '',
+    jangkaWaktuKontrak: '',
+    startDateKontrak: '',
+    endDateKontrak: '',
+    skemaBayarPelanggan: '',
+    targetDelivery: '',
+    picWitel: '',
+    jenisOBL: '',
+    mitra: '',
+    judulJustifikasiOBL: '',
+    perkiraanNilaiPekerjaan: '',
+    jenisPengadaan: '',
+    targetBillcomp: '',
+    nomorQuote: '',
+    alasanKeterlambatanOBL: '',
+  });
 
   useEffect(() => {
     const user = localStorage.getItem('user') || 'User';
@@ -24,11 +48,57 @@ const InputUser = ({ socket, user, adminName}) => {
     }
   }, []);
 
-  const handleSubmit = (type) => {
-    type.preventDefault();
-    alert("Data submitted");
-    socket.emit("sendNotification", submit);
-    setSubmit('');
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch('http://localhost:8000/api/justifikasi-obl/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        alert("Data submitted successfully");
+        // Reset form after submission
+        setFormData({
+          witel: '',
+          bud: '',
+          tahunProject: '',
+          idlop: '',
+          namaPelanggan: '',
+          judulKontrakKB: '',
+          nomorKontrakKB: '',
+          estimasiTanggalKB: '',
+          jangkaWaktuKontrak: '',
+          startDateKontrak: '',
+          endDateKontrak: '',
+          skemaBayarPelanggan: '',
+          targetDelivery: '',
+          picWitel: '',
+          jenisOBL: '',
+          mitra: '',
+          judulJustifikasiOBL: '',
+          perkiraanNilaiPekerjaan: '',
+          jenisPengadaan: '',
+          targetBillcomp: '',
+          nomorQuote: '',
+          alasanKeterlambatanOBL: '',
+        });
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert("Failed to submit data");
+      });
   };
 
   return (
@@ -36,188 +106,165 @@ const InputUser = ({ socket, user, adminName}) => {
       <div className="background"></div>
       <div className="new-page">
         <h3>{`${greeting}, ${userName}`}</h3>
-        {/* <p>Silahkan mengisi form berikut:</p> */}
         <form onSubmit={handleSubmit}>
           <label>
             Witel:
-            <select>
+            <select name="witel" value={formData.witel} onChange={handleInputChange}>
               <option value="">Pilih</option>
-              <option value="">Surabaya Selatan</option>
-              <option value="">Surabaya Utara</option>
-              <option value="">Denpasar</option>
-              <option value="">Sidoarjo</option>
-              <option value="">Malang</option>
-              <option value="">Madura</option>
-              <option value="">Pasuruan</option>
-              <option value="">Jember</option>
-              <option value="">Kediri</option>
-              <option value="">Madiun</option>
-              <option value="">Singaraja</option>
-              <option value="">NTT</option>
-              <option value="">NTB</option>
+              <option value="Surabaya Selatan">Surabaya Selatan</option>
+              <option value="Surabaya Utara">Surabaya Utara</option>
+              <option value="Denpasar">Denpasar</option>
+              <option value="Sidoarjo">Sidoarjo</option>
+              <option value="Malang">Malang</option>
+              <option value="Madura">Madura</option>
+              <option value="Pasuruan">Pasuruan</option>
+              <option value="Jember">Jember</option>
+              <option value="Kediri">Kediri</option>
+              <option value="Madiun">Madiun</option>
+              <option value="Singaraja">Singaraja</option>
+              <option value="NTT">NTT</option>
+              <option value="NTB">NTB</option>
             </select>
           </label>
 
           <label>
             BUD:
-            <select>
+            <select name="bud" value={formData.bud} onChange={handleInputChange}>
               <option value="">Pilih</option>
-              <option value="">DBS</option>
-              <option value="">DGS</option>
-              <option value="">DES</option>
-              <option value="">DPS (Private)</option>
-              <option value="">DSS (SOE)</option>
+              <option value="DBS">DBS</option>
+              <option value="DGS">DGS</option>
+              <option value="DES">DES</option>
+              <option value="DPS (Private)">DPS (Private)</option>
+              <option value="DSS (SOE)">DSS (SOE)</option>
             </select>
           </label>
 
           <label>
-            Tahun project:
-            <select>
+            Tahun Project:
+            <select name="tahunProject" value={formData.tahunProject} onChange={handleInputChange}>
               <option value="">Pilih</option>
-              <option value="">2024</option>
-              <option value="">2023</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
             </select>
           </label>
 
           <label>
             IDLOP:
-            <input type="text" name="idlop" />
+            <input type="text" name="idlop" value={formData.idlop} onChange={handleInputChange} />
           </label>
 
           <label>
             Nama Pelanggan:
-            <input type="text" name="namaPelanggan" />
+            <input type="text" name="namaPelanggan" value={formData.namaPelanggan} onChange={handleInputChange} />
           </label>
 
           <label>
             Judul Kontrak KB:
-            <input type="text" name="judulKontrakKB" />
+            <input type="text" name="judulKontrakKB" value={formData.judulKontrakKB} onChange={handleInputChange} />
           </label>
 
           <label>
-            Nomor kontrak KB:
-            <input type="text" name="nomorKontrakKB" />
+            Nomor Kontrak KB:
+            <input type="text" name="nomorKontrakKB" value={formData.nomorKontrakKB} onChange={handleInputChange} />
           </label>
 
           <label>
-            Estimasi tanggal KB:
-            <input type="date" name="estimasiTanggalKB" />
+            Estimasi Tanggal KB:
+            <input type="date" name="estimasiTanggalKB" value={formData.estimasiTanggalKB} onChange={handleInputChange} />
           </label>
 
           <label>
-            Jangka waktu kontrak:
-            <input type="text" name="jangkaWaktuKontrak" />
+            Jangka Waktu Kontrak:
+            <input type="text" name="jangkaWaktuKontrak" value={formData.jangkaWaktuKontrak} onChange={handleInputChange} />
           </label>
 
           <label>
             Start Date Kontrak:
-            <input type="date" name="startDateKontrak" />
+            <input type="date" name="startDateKontrak" value={formData.startDateKontrak} onChange={handleInputChange} />
           </label>
 
           <label>
             End Date Kontrak:
-            <input type="date" name="endDateKontrak" />
+            <input type="date" name="endDateKontrak" value={formData.endDateKontrak} onChange={handleInputChange} />
           </label>
 
           <label>
             Skema Bayar Pelanggan:
-            <select>
+            <select name="skemaBayarPelanggan" value={formData.skemaBayarPelanggan} onChange={handleInputChange}>
               <option value="">Pilih</option>
-              <option value="">One Time Charge (OTC)</option>
-              <option value="">Monthly Recurring Charge (MRC)</option>
-              <option value="">Termin</option>
-              <option value="">DP dan Pelunasan</option>
+              <option value="One Time Charge (OTC)">One Time Charge (OTC)</option>
+              <option value="Monthly Recurring Charge (MRC)">Monthly Recurring Charge (MRC)</option>
+              <option value="Termin">Termin</option>
+              <option value="DP dan Pelunasan">DP dan Pelunasan</option>
             </select>
           </label>
 
           <label>
             Target Delivery:
-            <input type="date" name="targetDelivery" />
+            <input type="date" name="targetDelivery" value={formData.targetDelivery} onChange={handleInputChange} />
           </label>
 
           <label>
             PIC Witel:
-            <input type="text" name="picWitel" />
+            <input type="text" name="picWitel" value={formData.picWitel} onChange={handleInputChange} />
           </label>
 
           <label>
             Jenis OBL:
-            <select>
+            <select name="jenisOBL" value={formData.jenisOBL} onChange={handleInputChange}>
               <option value="">Pilih</option>
-              <option value="">KL</option>
-              <option value="">WO</option>
-              <option value="">SP</option>
+              <option value="KL">KL</option>
+              <option value="WO">WO</option>
+              <option value="SP">SP</option>
             </select>
           </label>
 
           <label>
             Mitra:
-            <select>
+            <select name="mitra" value={formData.mitra} onChange={handleInputChange}>
               <option value="">Pilih</option>
-              <option value="">KOPEGTEL KEDIRI</option>
-              <option value="">KOPEGTEL MALANG</option>
-              <option value="">KOPKAR SMART MEDIA</option>
-              <option value="">PT ADMINISTRASI MEDIKA / ADMEDIKA</option>
-              <option value="">PT DIGITAL APLIKASI SOLUSI/DIGISERV</option>
-              <option value="">PT DWIMITRA EKATAMA MANDIRI</option>
-              <option value="">PT EL-KOKAR TIMUR</option>
-              <option value="">PT GRAHA INFORMATIKA NUSANTARA/GRATIKA</option>
-              <option value="">PT GREATSOFT SOLUSI INDONESIA</option>
-              <option value="">PT INFOMEDIA NUSANTARA</option>
-              <option value="">PT INTEGRASI LOGISTIK CIPTA SOLUSI/ ILCS</option>
-              <option value="">PT MADINA MITRA TEKNIK</option>
-              <option value="">PT METRANET</option>
-              <option value="">PT METRA DIGITAL MEDIA/ MD MEDIA</option>
-              <option value="">PT MITRA INOVASI JAYANTARA/MINOVA</option>
-              <option value="">PT MULTIMEDIA NUSANTARA</option>
-              <option value="">PT PINS INDONESIA</option>
-              <option value="18">PT PRIMA AKSES SOLUSI GLOBAL</option>
-              <option value="19">PT SANDHY PUTRA MAKMUR</option>
-              <option value="20">PT SIGMA CIPTA CARAKA</option>
-              <option value="21">PT SIGMA METRASYS SOLUTION</option>
-              <option value="22">PT SISTELINDO MITRALINTAS</option>
-              <option value="23">PT SKILL NUSA INFOTAMA</option>
-              <option value="24">PT SUMBERSOLUSINDO HITECH</option>
-              <option value="25">PT TELEKOMUNIKASI SELULER</option>
-              <option value="26">PT TELKOM AKSES/TA</option>
-              <option value="27">PT TELKOM PRIMA CIPTA CERTIFIA/TPCC</option>
-              <option value="28">PT TELKOM SATELIT INDONESIA/TELKOMSAT</option>
-              <option value="29">PT TERA DATA INDONUSA</option>
-              <option value="30">PT WAHANA CIPTASINATRIA/WCS</option>
-              <option value="31">LAINNYA</option>
+              <option value="KOPEGTEL KEDIRI">KOPEGTEL KEDIRI</option>
+              <option value="KOPEGTEL MALANG">KOPEGTEL MALANG</option>
+              <option value="KOPKAR SMART MEDIA">KOPKAR SMART MEDIA</option>
+              <option value="PT ADMINISTRASI MEDIKA / ADMEDIKA">PT ADMINISTRASI MEDIKA / ADMEDIKA</option>
             </select>
           </label>
 
           <label>
             Judul Justifikasi OBL:
-            <input type="text" name="judulJustifikasiOBL" />
+            <input type="text" name="judulJustifikasiOBL" value={formData.judulJustifikasiOBL} onChange={handleInputChange} />
           </label>
 
           <label>
             Perkiraan Nilai Pekerjaan:
-            <input type="text" name="perkiraanNilaiPekerjaan" />
+            <input type="number" name="perkiraanNilaiPekerjaan" value={formData.perkiraanNilaiPekerjaan} onChange={handleInputChange} />
           </label>
 
           <label>
             Jenis Pengadaan:
-            <select>
-              <option value="">Select Jenis Pengadaan</option>
+            <select name="jenisPengadaan" value={formData.jenisPengadaan} onChange={handleInputChange}>
+              <option value="">Pilih</option>
+              <option value="KHS">KHS</option>
+              <option value="PL">PL</option>
+              <option value="Tender Terbatas">Tender Terbatas</option>
+              <option value="Tender Umum">Tender Umum</option>
+              <option value="ePurchasing">ePurchasing</option>
             </select>
           </label>
 
           <label>
             Target Billcomp:
-            <input type="date" name="targetBillcomp" />
+            <input type="date" name="targetBillcomp" value={formData.targetBillcomp} onChange={handleInputChange} />
           </label>
 
           <label>
             Nomor Quote:
-            <input type="text" name="nomorQuote" />
+            <input type="text" name="nomorQuote" value={formData.nomorQuote} onChange={handleInputChange} />
           </label>
 
           <label>
-            Alasan Keterlambatan Pengajuan OBL:
-            <input type="text" name="alasanKeterlambatanOBL" />
+            Alasan Keterlambatan OBL:
+            <textarea name="alasanKeterlambatanOBL" value={formData.alasanKeterlambatanOBL} onChange={handleInputChange}></textarea>
           </label>
 
           <button type="submit">Submit</button>
