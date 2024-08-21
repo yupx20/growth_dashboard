@@ -12,6 +12,7 @@ class JustifikasiOBL(models.Model):
     jangkaWaktuKontrak = models.CharField(max_length=100)
     startDateKontrak = models.DateField()
     endDateKontrak = models.DateField()
+    perkiraanNilaiKontrak = models.DecimalField(max_digits=15, decimal_places=2)
     skemaBayarPelanggan = models.CharField(max_length=100)
     targetDelivery = models.DateField()
     picWitel = models.CharField(max_length=100)
