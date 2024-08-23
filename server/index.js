@@ -31,7 +31,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("sendNotification", (Submit) => {
-    console.log('Data Ter' + Submit);
+    console.log('Data Added' + Submit);
     io.emit("getNotification", Submit);
   });
 

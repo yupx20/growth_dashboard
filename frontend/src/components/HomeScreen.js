@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faChartBar, faChartLine } from '@fortawesome/free-solid-svg-icons';
 import Navbar from './Navbar';
 import '../styling/HomeScreen.css';
 
-const HomeScreen = ({ socket, witelName }) => {  // Destructure socket from props
+const HomeScreen = ({ socket, witelName }) => {
   const [greeting, setGreeting] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
@@ -51,7 +51,11 @@ const HomeScreen = ({ socket, witelName }) => {  // Destructure socket from prop
   };
 
   const handleStatisticsClick = () => {
-    alert('Statistics button clicked');
+    navigate('/statistics'); // Mengarahkan ke halaman statistik
+  };
+
+  const handleGrowthClick = () => {
+    alert('Growth button clicked');
   };
 
   return (
@@ -73,6 +77,13 @@ const HomeScreen = ({ socket, witelName }) => {  // Destructure socket from prop
           </div>
           <p className="frame-number">99+</p>
           <p className="frame-text">Statistics</p>
+        </button>
+        <button className="frame growth-frame" onClick={handleGrowthClick}>
+          <div className="frame-icon">
+            <FontAwesomeIcon icon={faChartLine} />
+          </div>
+          <p className="frame-number">75+</p>
+          <p className="frame-text">Growth</p>
         </button>
       </div>
     </div>

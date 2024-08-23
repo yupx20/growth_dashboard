@@ -9,6 +9,7 @@ import Input from './pages/Input';
 import Dashboard from './pages/Dashboard';
 import Profil from './pages/Profil';
 import Welcome from './pages/Welcome';
+import Statistics from './pages/Statistics';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profil" element={<Profil />} />
         <Route path="/welcome" element={<Welcome />} />
+        <Route path="/statistics" element={<Statistics />} />
       </Routes>
     </Router>
   );
