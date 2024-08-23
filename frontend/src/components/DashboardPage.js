@@ -30,6 +30,7 @@ const Dashboard = () => {
             <thead>
               <tr>
                 <th>IDLOP</th>
+                <th>Witel</th>
                 <th>Nama Pelanggan</th>
                 <th>Judul Kontrak KB</th>
                 <th>Nomor Kontrak KB</th>
@@ -55,6 +56,7 @@ const Dashboard = () => {
               {data.map((item, index) => (
                 <tr key={index}>
                   <td>{item.idlop}</td>
+                  <td>{item.witel}</td>
                   <td>{item.namaPelanggan}</td>
                   <td>{item.judulKontrakKB}</td>
                   <td>{item.nomorKontrakKB}</td>
