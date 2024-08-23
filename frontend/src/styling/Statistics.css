@@ -4,6 +4,7 @@
     height: 100vh;
     background-color: #f0f0f0;
     font-family: Montserrat;
+    justify-content: space-between;
     position: relative; /* Position relative for absolute positioning of the back button */
 }
 
@@ -29,15 +30,16 @@
 }
 
 /* Style for the pie chart container */
-.pie-chart-container {
-    width: 50%;
+.chart-container {
+    width: 30%;
     background: #ffffff;
     border-radius: 25px;
-    padding: 40px;
+    padding: 20px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
+    margin: 20px 100px 20px 0;
     border: 2px solid #973131; /* Adding border similar to HomeScreen frames */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
