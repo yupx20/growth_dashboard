@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import Profil from './pages/Profil';
 import Welcome from './pages/Welcome';
 import Statistics from './pages/Statistics';
+import Growth from './pages/Growth'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/profil" element={<Profil />} />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/statistics" element={<Statistics />} />
+        <Route path="/growth" element={<Growth />} />
       </Routes>
     </Router>
   );

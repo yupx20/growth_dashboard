@@ -1,0 +1,123 @@
+/* Container for the growth page */
+.growth-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Montserrat;
+    justify-content: space-between;
+    position: relative; /* Position relative for absolute positioning of the back button */
+}
+
+/* Content area next to the sidebar */
+.growth-content {
+    margin-left: 275px; /* Adjust this to match the sidebar width */
+    padding: 20px;
+    width: calc(100% - 275px); /* Take the remaining width */
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+}
+
+/* Style for the growth chart container */
+.growth-chart-container {
+    width: 45%;
+    height: 45%;
+    max-width: 800px; /* Optional: Max width for large screens */
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 100px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #973131;
+    margin: 20px auto; /* Centered horizontally */
+    /* margin-left: 20px; */
+    text-align: center;
+}
+
+/* Style for the growth table */
+.growth-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.growth-table th, .growth-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.growth-table th {
+    background-color: #f2f2f2;
+    color: #555;
+}
+
+.growth-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.growth-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Style for the growth summary */
+.growth-summary {
+    margin-top: 20px;
+}
+
+/* Style for the back button */
+.back-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #973131;
+    color: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    outline: none;
+}
+
+.back-button:hover {
+    background-color: #EB5B00;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .growth-container {
+        flex-direction: column; /* Stack elements vertically on small screens */
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative; /* Remove fixed position on small screens */
+    }
+
+    .growth-content {
+        margin-left: 0; /* Remove left margin on small screens */
+        width: 100%; /* Full width on small screens */
+    }
+
+    .growth-chart-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .back-button {
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 10px;
+    }
+}

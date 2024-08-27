@@ -55,7 +55,7 @@ const HomeScreen = ({ socket, witelName }) => {
   };
 
   const handleGrowthClick = () => {
-    alert('Growth button clicked');
+    navigate('/growth'); // Mengarahkan ke halaman growth
   };
 
   return (

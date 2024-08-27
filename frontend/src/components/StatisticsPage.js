@@ -18,7 +18,7 @@ const StatisticsPage = () => {
   };
 
   const data1 = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Surabaya Selatan', 'Surabaya Utara', 'Sidoarjo', 'NTT', 'NTB'],
     datasets: [
       {
         label: '# of Votes',
@@ -48,14 +48,14 @@ const StatisticsPage = () => {
     labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
     datasets: [
       {
-        label: 'Pendapatan 2023 (dalam juta)',
+        label: 'OBL 2024 (dalam juta)',
         data: [12, 19, 8, 15, 22, 30],
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
       {
-        label: 'Pendapatan 2022 (dalam juta)',
+        label: 'OBL 2023 (dalam juta)',
         data: [10, 17, 6, 13, 20, 25],
         backgroundColor: 'rgba(153, 102, 255, 0.6)',
         borderColor: 'rgba(153, 102, 255, 1)',
@@ -78,11 +78,11 @@ const StatisticsPage = () => {
     <div className="statistics-container">
       <Navbar />
       <div className="chart-container">
-      <h2>Statistics</h2>
+      <h2>Jumlah OBL Witel</h2>
         <Pie data={data1} />
       </div>
       <div className="chart-container">
-      <h2>Bar Chart</h2>
+      <h2>Nilai OBL</h2>
         <Bar data={data2} options={options} />
       </div>
       <button className="back-button" onClick={handleBackClick}>
