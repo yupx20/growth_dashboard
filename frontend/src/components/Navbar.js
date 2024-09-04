@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styling/SideBar.css'; // Pastikan nama file CSS sesuai
+import '../styling/Sidebar.css'; // Pastikan nama file CSS sesuai
 
 const Navbar = () => {
     return (

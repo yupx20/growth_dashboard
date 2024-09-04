@@ -73,8 +73,12 @@ const StatisticsPage = () => {
     <div className="statistics-container">
       <Navbar />
       <div className="chart-container">
-        <h2>Statistics</h2>
-        <Pie data={projectData}/>
+      <h2>Jumlah OBL Witel</h2>
+        <Pie data={data1} />
+      </div>
+      <div className="chart-container">
+      <h2>Nilai OBL</h2>
+        <Bar data={data2} options={options} />
       </div>
       <button className="back-button" onClick={handleBackClick}>
         <FontAwesomeIcon icon={faArrowLeft} />
