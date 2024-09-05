@@ -71,7 +71,7 @@ const BarChart = () => {
     <div className="statistics-container">
       <Navbar />
       <div className="chart-container">
-        <h2>Bar Chart</h2>
+        <h2>Proyek Witel</h2>
         <Bar data={chartData} options={options} />
       </div>
       <button className="back-button" onClick={handleBackClick}>

@@ -1,47 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import '../styling/Growth.css';
 
 const Growth = () => {
-  const [data] = useState([
-    { year: '2023', value: 200 },
-    { year: '2024', value: 350 },
-  ]);
+  const [data, setData] = useState([]);
 
-  // Calculate the growth percentage
-  const growthPercentage = ((data[1].value - data[0].value) / data[0].value) * 100;
+  useEffect(() => {
+    fetch('http://localhost:8000/api/growth-data/')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);  // Debugging: lihat data yang diterima
+        setData(data);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+    }).format(value);
+  };
 
   return (
     <div className="growth-container">
-        <Navbar />
-        <div className="growth-chart-container">
-          <h1>Yearly Growth Comparison</h1>
-          <table className="growth-table">
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>Value</th>
+      <Navbar />
+      <div className="growth-chart-container">
+        <h1>Justifikasi OBL Growth</h1>
+        <table className="growth-table">
+          <thead>
+            <tr>
+              <th>Judul Justifikasi</th>
+              <th>Perkiraan Nilai Pekerjaan</th>
+              <th>Perkiraan Nilai Kontrak</th>
+              <th>Komposisi CPE (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index}>
+                <td>{item.judul}</td>
+                <td>{formatCurrency(item.perkiraan_nilai_pekerjaan)}</td>
+                <td>{formatCurrency(item.perkiraan_nilai_kontrak)}</td>
+                <td>{typeof item.ratio === 'number' ? item.ratio.toFixed(2) : 'N/A'}</td>
               </tr>
-            </thead>
-            <tbody>
-              {data.map((item) => (
-                <tr key={item.year}>
-                  <td>{item.year}</td>
-                  <td>{item.value}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="growth-summary">
-            <h2>Growth Percentage: {growthPercentage.toFixed(2)}%</h2>
-          </div>
-          <button className="back-button" onClick={() => window.history.back()}>
+            ))}
+          </tbody>
+        </table>
+        <button className="back-button" onClick={() => window.history.back()}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
-        </div>
       </div>
+    </div>
   );
 };
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styling/Input.css';
 
-const InputUser = () => {
+const InputUser = ({socket}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [greeting, setGreeting] = useState('');
