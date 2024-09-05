@@ -1,84 +1,78 @@
 import React, { useEffect, useState } from 'react';
-import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import '../styling/Statistics.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import '../styling/Statistics.css';
 
-const StatisticsPage = () => {
-  const navigate = useNavigate();
-  const [projectData, setProjectData] = useState({ labels: [], datasets: [] });
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
+
+const BarChart = () => {
+  const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: 'Jumlah Proyek',
+        data: [],
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+      },
+    ],
+  });
 
   useEffect(() => {
-    // Panggil API untuk mendapatkan data proyek per witel
-    const fetchProjectData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('/api/project-count-per-witel/');
+        const response = await fetch('http://localhost:8000/api/witel-project-count/');
         const data = await response.json();
-
-        setProjectData({
-          labels: data.labels,
+        
+        const labels = data.map(item => item.witel);
+        const values = data.map(item => item.total_projects);
+        
+        setChartData({
+          labels: labels,
           datasets: [
             {
               label: 'Jumlah Proyek',
-              data: data.data,
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(75, 192, 192, 0.2)'
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(75, 192, 192, 1)'
-              ],
+              data: values,
+              backgroundColor: 'rgba(75, 192, 192, 0.6)',
+              borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1,
             },
           ],
         });
       } catch (error) {
-        console.error("Error fetching project data:", error);
+        console.error('Error fetching data:', error);
       }
     };
-
-    fetchProjectData();
+    fetchData();
   }, []);
 
+  const navigate = useNavigate();
+
   const handleBackClick = () => {
-    navigate(-1); // Go back to the previous page
+    navigate(-1); // Kembali ke halaman sebelumnya
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Jumlah Proyek per Witel',
+      },
+    },
   };
 
   return (
     <div className="statistics-container">
       <Navbar />
       <div className="chart-container">
-      <h2>Jumlah OBL Witel</h2>
-        <Pie data={data1} />
-      </div>
-      <div className="chart-container">
-      <h2>Nilai OBL</h2>
-        <Bar data={data2} options={options} />
+        <h2>Bar Chart</h2>
+        <Bar data={chartData} options={options} />
       </div>
       <button className="back-button" onClick={handleBackClick}>
         <FontAwesomeIcon icon={faArrowLeft} />
@@ -87,4 +81,4 @@ const StatisticsPage = () => {
   );
 };
 
-export default StatisticsPage;
+export default BarChart;

@@ -20,19 +20,11 @@ def create_justifikasi_obl(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-def get_project_count_per_witel(request):
-    # Menghitung jumlah proyek (berdasarkan id) untuk setiap witel
-    project_count = (
+def witel_project_count(request):
+    data = (
         JustifikasiOBL.objects
         .values('witel')
-        .annotate(count=Count('id'))
+        .annotate(total_projects=Count('id'))
         .order_by('witel')
     )
-    
-    # Format data untuk dikirimkan ke frontend
-    data = {
-        'labels': [entry['witel'] for entry in project_count],
-        'data': [entry['count'] for entry in project_count],
-    }
-    
-    return JsonResponse(data)
+    return JsonResponse(list(data), safe=False)

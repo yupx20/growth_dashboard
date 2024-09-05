@@ -8,40 +8,20 @@
     position: relative; /* Position relative for absolute positioning of the back button */
 }
 
-/* Sidebar - Assuming sidebar exists in a separate component and has a fixed width */
-.sidebar {
-    width: 275px; /* Adjust this to the width of your sidebar */
-    background-color: #333; /* Example background color for sidebar */
-    color: #fff; /* Text color for sidebar */
-    position: fixed; /* Fixed position */
-    height: 100vh; /* Full viewport height */
-    overflow-y: auto; /* Enable vertical scrolling if needed */
-}
-
-/* Content area next to the sidebar */
-.statistics-content {
-    margin-left: 275px; /* Adjust this to match the sidebar width */
-    padding: 20px;
-    width: calc(100% - 275px); /* Take the remaining width */
-    overflow-y: auto; /* Enable vertical scrolling */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items horizontally */
-}
-
 /* Style for the pie chart container */
 .chart-container {
-    width: 30%;
+    width: 45%;
+    height: 45%;
+    max-width: 800px; /* Optional: Max width for large screens */
     background: #ffffff;
-    border-radius: 25px;
+    border-radius: 20px;
     padding: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    margin: 20px 100px 20px 0;
-    border: 2px solid #973131; /* Adding border similar to HomeScreen frames */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 100px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #973131;
+    margin: 20px auto; /* Centered horizontally */
+    /* margin-left: 20px; */
+    text-align: center;
 }
 
 /* Style for the back button */
@@ -49,16 +29,19 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    padding: 10px 20px;
+    width: 50px;
+    height: 50px;
     background-color: #973131;
     color: whitesmoke;
     border: none;
-    border-radius: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
     cursor: pointer;
-    font-size: 1em;
     transition: background 0.3s ease;
     outline: none;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
 }
 
 .back-button:hover {
