@@ -45,5 +45,5 @@ def get_growth_data(request):
             'perkiraan_nilai_kontrak': float(justifikasi.perkiraanNilaiKontrak),
             'ratio': float(ratio)
         })
-    
+
     return JsonResponse(data, safe=False)
