@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styling/Input.css';
 
-const InputUser = () => {
+const InputUser = ({socket}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [greeting, setGreeting] = useState('');
@@ -102,6 +102,9 @@ const InputUser = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
+       // Emit data to the server using socket
+       socket.emit("sendNotification", formData);
+       setFormData('');
       fetch('http://localhost:8000/api/justifikasi-obl/', {
         method: 'POST',
         headers: {

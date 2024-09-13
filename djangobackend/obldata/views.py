@@ -28,3 +28,22 @@ def witel_project_count(request):
         .order_by('witel')
     )
     return JsonResponse(list(data), safe=False)
+
+def get_growth_data(request):
+    data = []
+    justifikasi_list = JustifikasiOBL.objects.all()
+    
+    for justifikasi in justifikasi_list:
+        if justifikasi.perkiraanNilaiKontrak != 0:
+            ratio = (justifikasi.perkiraanNilaiPekerjaan / justifikasi.perkiraanNilaiKontrak) * 100
+        else:
+            ratio = 0  # Avoid division by zero
+        
+        data.append({
+            'judul': justifikasi.judulJustifikasiOBL,
+            'perkiraan_nilai_pekerjaan': float(justifikasi.perkiraanNilaiPekerjaan),
+            'perkiraan_nilai_kontrak': float(justifikasi.perkiraanNilaiKontrak),
+            'ratio': float(ratio)
+        })
+    
+    return JsonResponse(data, safe=False)

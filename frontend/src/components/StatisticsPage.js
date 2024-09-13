@@ -24,20 +24,20 @@ const BarChart = () => {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = async () => {
       try {
         const response = await fetch('http://localhost:8000/api/witel-project-count/');
-        const data = await response.json();
-        
-        const labels = data.map(item => item.witel);
-        const values = data.map(item => item.total_projects);
-        
+        const projectData = await response.json();
+
+        const witelNames = projectData.map(item => item.witel);
+        const projectCounts = projectData.map(item => item.total_projects);
+
         setChartData({
-          labels: labels,
+          labels: witelNames,
           datasets: [
             {
               label: 'Jumlah Proyek',
-              data: values,
+              data: projectCounts,
               backgroundColor: 'rgba(75, 192, 192, 0.6)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1,
@@ -45,19 +45,20 @@ const BarChart = () => {
           ],
         });
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Gagal mengambil data:', error);
       }
     };
-    fetchData();
+
+    loadData();
   }, []);
 
   const navigate = useNavigate();
 
-  const handleBackClick = () => {
-    navigate(-1); // Kembali ke halaman sebelumnya
+  const goBack = () => {
+    navigate(-1); // Mengarahkan kembali ke halaman sebelumnya
   };
 
-  const options = {
+  const chartOptions = {
     responsive: true,
     plugins: {
       title: {
@@ -71,10 +72,10 @@ const BarChart = () => {
     <div className="statistics-container">
       <Navbar />
       <div className="chart-container">
-        <h2>Bar Chart</h2>
-        <Bar data={chartData} options={options} />
+        <h2>Diagram Batang</h2>
+        <Bar data={chartData} options={chartOptions} />
       </div>
-      <button className="back-button" onClick={handleBackClick}>
+      <button className="back-button" onClick={goBack}>
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>
     </div>
