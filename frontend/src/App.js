@@ -25,7 +25,7 @@ function App() {
         <Route path="/profil" element={<Profil />} />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/statistics" element={<Statistics />} />
-        <Route path="/growth" element={<Growth />} />
+        <Route path="/growth/:idlop" element={<Growth />} />
       </Routes>
     </Router>
   );

@@ -1,28 +1,25 @@
 /* Container for the growth page */
 .growth-container {
     display: flex;
-    height: 100vh;
-    background-color: #f0f0f0;
+    height: 50vh;
+    background-color: #ffffff;
     font-family: Montserrat;
     justify-content: space-between;
     position: relative; /* Position relative for absolute positioning of the back button */
+    flex-direction: row;
 }
 
-/* Content area next to the sidebar */
-.growth-content {
-    margin-left: 275px; /* Adjust this to match the sidebar width */
-    padding: 20px;
-    width: calc(100% - 275px); /* Take the remaining width */
-    overflow-y: auto; /* Enable vertical scrolling */
+.growth {
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
+    padding-top: 10vh;
 }
 
 /* Style for the growth chart container */
-.growth-chart-container {
-    width: 45%;
-    max-width: 800px; /* Optional: Max width for large screens */
+.growth-content-container {
+    width: 75%;
     background: #ffffff;
     border-radius: 20px;
     padding: 20px;
@@ -31,7 +28,16 @@
     border: 2px solid #973131;
     margin: 20px auto; /* Centered horizontally */
     text-align: center;
-    min-height: 100px; /* Set minimum height, optional */
+    justify-content: space-evenly;
+}
+
+.chart {
+    width: 50%;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
 }
 
 /* Style for the growth table */

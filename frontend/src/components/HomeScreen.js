@@ -78,13 +78,6 @@ const HomeScreen = ({ socket, witelName }) => {
           <p className="frame-number">99+</p>
           <p className="frame-text">Statistics</p>
         </button>
-        <button className="frame growth-frame" onClick={handleGrowthClick}>
-          <div className="frame-icon">
-            <FontAwesomeIcon icon={faChartLine} />
-          </div>
-          <p className="frame-number">75+</p>
-          <p className="frame-text">Growth</p>
-        </button>
       </div>
     </div>
   );

@@ -105,7 +105,7 @@ const InputUser = ({socket}) => {
        // Emit data to the server using socket
        socket.emit("sendNotification", formData);
        setFormData('');
-      fetch('http://localhost:8000/api/justifikasi-obl/', {
+      fetch('http://localhost:8000/api/create-justifikasi-obl/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

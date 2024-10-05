@@ -75,6 +75,10 @@ const BarChart = () => {
         <h2>Proyek Witel</h2>
         <Bar data={chartData} options={chartOptions} />
       </div>
+      <div className="chart-container">
+        <h2>Proyek Witel</h2>
+        <Bar data={chartData} options={chartOptions} />
+      </div>
       <button className="back-button" onClick={goBack}>
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>

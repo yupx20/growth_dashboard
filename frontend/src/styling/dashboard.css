@@ -4,7 +4,6 @@
 }
 
 .dashboard-content {
-  /* margin-left: 1px; Adjust the margin to the width of the navbar */
   padding: 20px;
   overflow-y: auto; /* Enable vertical scrolling */
   width: calc(100% - 275px); /* Take the remaining width */
@@ -15,25 +14,37 @@
   margin: 0 auto;
 }
 
-/* .dashboard h1 {
-  text-align: center;
-  color: #973131;
-  margin-bottom: 20px;
-} */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 275px;
+  width: 50px;
+  height: 50px;
+  background-color: #973131;
+  color: whitesmoke;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  outline: none;
+  z-index: 1000; /* Ensures it stays on top of other elements */
+}
+
 
 .dashboard table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  background-color: #fff; /* Ensure table background is white */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard th, .dashboard td {
   border: 1px solid #ddd;
-  padding: 12px; /* Increase padding for better readability */
+  padding: 12px;
   text-align: center;
-  vertical-align: middle; /* Vertically center text */
+  vertical-align: middle;
 }
 
 .dashboard th {
@@ -49,19 +60,18 @@
   background-color: #ddd;
 }
 
-/* Additional styling for better visuals */
 .dashboard th:first-child, .dashboard td:first-child {
-  border-left: 0; /* Remove left border for the first column */
+  border-left: 0;
 }
 
 .dashboard th:last-child, .dashboard td:last-child {
-  border-right: 0; /* Remove right border for the last column */
+  border-right: 0;
 }
 
 .dashboard tr:first-child th {
-  border-top: 0; /* Remove top border for the first row */
+  border-top: 0;
 }
 
 .dashboard tr:last-child td {
-  border-bottom: 0; /* Remove bottom border for the last row */
+  border-bottom: 0;
 }
