@@ -39,17 +39,19 @@
   margin-bottom: 10px;
 }
 
-.navbar ul li a {
+.navbar ul li button {
   text-decoration: none;
+  background-color: #973131;
   color: #fff;
   font-size: 18px;
   display: block;
   text-align: center;
   padding: 10px;
-  border-radius: 5px; /* Optional: for rounded corners */
+  border-radius: 5px;
+  border: none;
 }
 
-.navbar ul li a:hover {
+.navbar ul li button:hover {
   color: #FFDE4D;
   background-color: rgba(255, 255, 255, 0.1); /* Optional: for hover effect */
 }

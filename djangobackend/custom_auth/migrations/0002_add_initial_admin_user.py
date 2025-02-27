@@ -15,18 +15,18 @@ def create_initial_admin_user(apps, schema_editor):
         last_name='1',
         is_staff=True,
         is_superuser=True,
-        password=make_password('adminpassword123')
+        password=make_password('admin123')
     )
     admin.save()
     
     desy = Admin(
-        username='desyputriutami',
-        email='desyputri@telkom.co.id',
-        first_name='Desy',
+        username='admin2',
+        email='admin@example.com',
+        first_name='Admin',
         last_name='2',
         is_staff=True,
         is_superuser=True,
-        password=make_password('desyputri123')
+        password=make_password('admin123')
     )
     desy.save()
 

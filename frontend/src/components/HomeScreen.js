@@ -5,11 +5,11 @@ import { faBell, faChartBar, faChartLine } from '@fortawesome/free-solid-svg-ico
 import Navbar from './Navbar';
 import '../styling/HomeScreen.css';
 
-const HomeScreen = ({ socket, witelName }) => {
+const HomeScreen = ({ socket }) => {
   const [greeting, setGreeting] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
-  const username = location.state?.adminName || 'Admin';
+  const username = location.state?.adminName;
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const HomeScreen = ({ socket, witelName }) => {
           <div className="frame-icon">
             <FontAwesomeIcon icon={faChartBar} />
           </div>
-          <p className="frame-number">99+</p>
+          <p className="frame-number"></p>
           <p className="frame-text">Statistics</p>
         </button>
       </div>

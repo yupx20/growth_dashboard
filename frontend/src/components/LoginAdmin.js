@@ -31,11 +31,13 @@ function LoginAdminPage() {
             });
 
             const data = await response.json();
-
+            
             if (data.status) {
                 setSuccessMessage(data.message);
                 setErrorMessage('');
                 alert(`Welcome ${adminName}!`);
+
+                localStorage.setItem('adminName', adminName);
 
                 // Emit event newUser ke server dengan informasi admin
                 if (socket) {
